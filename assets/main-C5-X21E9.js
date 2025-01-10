@@ -1,0 +1,12 @@
+import{i as d,S as f}from"./vendor-5ObWk2rO.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function n(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();const g="48154537-527b84123da1832c7b7680c8e",m="https://pixabay.com/api/";function h(t,o=1,s=9){const n=`${m}?key=${g}&q=${t}&image_type=photo&orientation=horizontal&safesearch=true`;return fetch(n).then(e=>{if(!e.ok)throw new Error("Failed to fetch images");return e.json()}).then(e=>e.hits).catch(e=>{throw console.error(e),new Error("Something went wrong!")})}function p(t){const o=document.querySelector(".gallery");if(o.innerHTML="",t.length===0){d.error({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!"});return}const s=t.map(({webformatURL:n,largeImageURL:e,tags:r,likes:i,views:c,comments:l,downloads:u})=>`
+        <a href="${e}" class="gallery-item">
+            <img src="${n}" alt="${r}" />
+            <div class="info">
+                <p><strong>Likes:</strong> <br> ${i}</p>
+                <p><strong>Views:</strong> <br> ${c}</p>
+                <p><strong>Comments:</strong> <br> ${l}</p>
+                <p><strong>Downloads:</strong> <br> ${u}</p>
+            </div>
+        </a>
+    `).join("");o.insertAdjacentHTML("beforeend",s)}function y(){document.querySelector(".loader").classList.add("visible")}function a(){document.querySelector(".loader").classList.remove("visible")}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector("#search-button"),o=document.querySelector("#search-input");if(!t||!o){console.error("Elements not found");return}let s=new f(".gallery a");t.addEventListener("click",function(){const n=o.value.trim();if(n===""){iziToast.warning({title:"Warning",message:"Please enter a search query."});return}y(),h(n).then(e=>{a(),p(e),s.refresh()}).catch(e=>{a(),iziToast.error({title:"Error",message:e.message})})})});
+//# sourceMappingURL=main-C5-X21E9.js.map
