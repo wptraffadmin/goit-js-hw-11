@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ініціалізація SimpleLightbox
     let lightbox = new SimpleLightbox('.gallery a');
 
-    searchButton.addEventListener('click', function () {
+    const performSearch = () => {
         const query = searchInput.value.trim();
         if (query === '') {
             iziToast.warning({
@@ -54,5 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     message: error.message,
                 });
             });
-    });
+    };
+    // Викликаємо функцію performSearch при натисканні кнопки або Enter
+    const searchHandler = (event) => {
+        if (event.type === 'click' || event.key === 'Enter') {
+            performSearch();
+        }
+    };
+
+    // Додаємо слухачі подій
+    searchButton.addEventListener('click', searchHandler);
+    searchInput.addEventListener('keydown', searchHandler);
 });
