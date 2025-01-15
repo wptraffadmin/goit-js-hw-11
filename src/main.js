@@ -1,9 +1,9 @@
-import { fetchImages } from './js/pixabay-api.js';
-import { renderImages, showLoadingIndicator, hideLoadingIndicator } from './js/render-functions.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
+import { fetchImages } from './js/pixabay-api.js';
+import { renderImages, showLoadingIndicator, hideLoadingIndicator } from './js/render-functions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.querySelector('#search-button');
