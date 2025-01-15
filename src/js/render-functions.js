@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import "izitoast/dist/css/iziToast.min.css";
+
 export function renderImages(images) {
     const gallery = document.querySelector('.gallery');
     // // gallery.innerHTML = ''; // Очищаємо галерею перед новим пошуком
